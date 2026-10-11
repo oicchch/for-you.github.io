@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Для тебя...</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="small-title">Сегодня особенный день...</p>
+
+        <h1>
+            С днём рождения,<br>
+            Виточка ♡
+        </h1>
+
+        <p class="description">
+            Я приготовил для тебя кое-что особенное...
+        </p>
+
+       <div class="scroll-hint" id="scrollHint">
+    <span>листай вниз</span>
+    <i class="scroll-arrow"></i>
+</div>
+</section>
+
+
+<section class="letter" id="letter">
+
+    <div class="letter-content">
+
+        <p class="small-title">
+            Для тебя
+        </p>
+
+        <h2>
+            У меня есть для тебя одно маленькое письмо...
+        </h2>
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="paper-wrap">
+
+                <div class="letter-paper">
+
+                    <div class="paper-text">
+                        Для тебя
+                    </div>
+
+                    <div class="paper-line"></div>
+
+                    <div class="paper-heart">
+                        ♡
+                    </div>
+
+                    <button class="read-button" id="readButton">
+                        Читать письмо
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="envelope-front">
+
+                <div class="front-left"></div>
+                <div class="front-right"></div>
+                <div class="front-bottom"></div>
+
+            </div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="heart-seal">
+                <span>♡</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="message" id="message">
+
+    <div class="message-box">
+
+        <p class="small-title">
+            От всего сердца
+        </p>
+
+        <h2>
+            Для моей Виточки
+        </h2>
+
+        <p>
+            С днём рождения, моя хорошая.
+            Пусть каждый твой день будет наполнен
+            счастьем, теплом и улыбками.
+        </p>
+
+        <p>
+            Я хочу, чтобы рядом с тобой всегда были
+            люди, которые любят тебя и делают тебя
+            счастливой.
+        </p>
+
+        <p>
+            И пусть впереди тебя ждёт ещё очень
+            много красивых моментов.
+        </p>
+
+        <div class="message-heart">
+            ♡
+        </div>
+<button class="next-button" id="nextButton">Дальше <3</button>
+    </div>
+
+</section>
+<section class="hub" id="hub">
+    <div class="hub-inner">
+        <p class="small-title">выбери</p>
+        <h2>Что тебе рассказать?</h2>
+
+        <div class="hub-cards">
+            <button class="topic-card" data-topic="why">
+                <span class="card-icon">♡</span>
+                <span class="card-title">Почему</span>
+                <span class="card-sub">почему я тебя люблю</span>
+            </button>
+
+            <button class="topic-card" data-topic="how">
+                <span class="card-icon">✦</span>
+                <span class="card-title">Как</span>
+                <span class="card-sub">как ты меня изменила</span>
+            </button>
+
+            <button class="topic-card final-card" id="finalCard" data-topic="final">
+    <span class="card-icon">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="none"
+             stroke="currentColor" stroke-width="1.5"
+             stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="4" rx="1"/>
+            <path d="M5 12v8h14v-8M12 8v12"/>
+            <path d="M12 8c-1.5-4-5-4.5-5-2.5S9.5 8 12 8zm0 0c1.5-4 5-4.5 5-2.5S14.5 8 12 8z"/>
+        </svg>
+    </span>
+    <span class="card-title">Поздравляю!</span>
+    <span class="card-sub">тебя ждёт подарок</span>
+</button>
+        </div>
+    </div>
+</section>
+
+<section class="topic" id="topic">
+    <div class="topic-box">
+        <button class="back-button" id="backButton">← Назад</button>
+
+        <div class="topic-page" id="page-why">
+            <h2>Почему я тебя люблю</h2>
+            <ul class="reasons" id="reasons">
+    <li class="reason">
+        <button class="reason-head" type="button">
+            <span class="reason-title">Твой смех</span>
+            <span class="reason-arrow">+</span>
+        </button>
+        <div class="reason-body">
+            <span class="reason-text" data-text="Твой смех всегда успакаивает и радует меня, ведь всегда мы смеемся вместе, не важно из-за чего, главное искренне и вместе >.<"></span>
+        </div>
+    </li>
+
+    <li class="reason">
+        <button class="reason-head" type="button">
+            <span class="reason-title">Твоя забота</span>
+            <span class="reason-arrow">+</span>
+        </button>
+        <div class="reason-body">
+            <span class="reason-text" data-text="Я как никто другой ощущаю, на сколько ты заботливая и чуткая девочка с самым благородным сердцем, таких добрых людей как ты я еще не встречал никогда, ты мой ангелочек <3."></span>
+        </div>
+    </li>
+
+    <li class="reason">
+        <button class="reason-head" type="button">
+            <span class="reason-title">Твои глаза</span>
+            <span class="reason-arrow">+</span>
+        </button>
+        <div class="reason-body">
+            <span class="reason-text" data-text="Каждое утро я благодарен этому миру, что могу смотреть в твои очаровательные глаза, в которых не на мнгновение не угасает вера в себя, в наше будущее, в меня."></span>
+        </div>
+    </li>
+
+    <li class="reason">
+        <button class="reason-head" type="button">
+            <span class="reason-title">Наши вечера</span>
+            <span class="reason-arrow">+</span>
+        </button>
+        <div class="reason-body">
+            <span class="reason-text" data-text="А каждый вечер с тобой ощущается как блаженный отдых в конце трудного или не очень дня, время когда мы по настоящему сливаемся во едино, каждый вечер для меня - праздник."></span>
+        </div>
+    </li>
+
+    <li class="reason">
+        <button class="reason-head" type="button">
+            <span class="reason-title">Просто ты</span>
+            <span class="reason-arrow">+</span>
+        </button>
+        <div class="reason-body">
+            <span class="reason-text" data-text="Вита, я никогда не встречу в жизни человека более похожего на меня чем ты, все дни что мы провели вместе я был счастлив, спасибо что ты у меня есть, моя любимая, искренняя, веселая, удивительно красивая девушка. Безумно тебя люблю."></span>
+        </div>
+    </li>
+</ul>
+        </div>
+
+        <div class="topic-page" id="page-how">
+            <h2>Как ты меня изменила</h2>
+            <p>Рядом с тобой я стал увереннее в себе, мне кажется я способен сделать все, если и не ради себя, то ради тебя.</p>
+            <p>Ты научила меня по другому смотреть на этот мир, научила быть проще в некоторых аспектах, научила понимать людей, благодаря тебе мне проще жить.</p>
+            <p>Спасибо тебе за то что ты есть у меня и у этого мира. Ты мое сердце, душа, кислород которым я дышу, без тебя не было бы меня. Безмерно люблю тебя моя пупсечкааааа!!! </p>
+        </div>
+
+        <div class="topic-page" id="page-final">
+
+    <div class="scratch-stage" id="scratchStage">
+        <h2>Последний шаг</h2>
+        <p class="scratch-hint">Сотри защитный слой...</p>
+
+        <div class="scratch-card" id="scratchCard">
+            <div class="scratch-under">
+                <svg viewBox="0 0 24 24" width="64" height="64" fill="none"
+                     stroke="currentColor" stroke-width="1.3"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="8" width="18" height="4" rx="1"/>
+                    <path d="M5 12v8h14v-8M12 8v12"/>
+                    <path d="M12 8c-1.5-4-5-4.5-5-2.5S9.5 8 12 8zm0 0c1.5-4 5-4.5 5-2.5S14.5 8 12 8z"/>
+                </svg>
+                <span>Твой подарок</span>
+            </div>
+            <canvas id="scratchCanvas"></canvas>
+        </div>
+
+        <div class="scratch-progress" id="scratchProgress">0%</div>
+    </div>
+
+    <div class="final-content" id="finalContent">
+        <h2>Поздравляю!</h2>
+        <p>С днём рождения, моя любимая!</p>
+        <p>Ты заслуживаешь самого лучшего.</p>
+        <p class="warning"> Подарок тебя уже ждёт.<br>Не торопись, но и не задерживайся ♡</p>
+    </div>
+
+</div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

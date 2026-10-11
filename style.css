@@ -1,0 +1,3031 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(180, 40, 85, 0.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(120, 20, 55, 0.25),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #16050c,
+            #320a19 45%,
+            #17050d
+        );
+
+    color: #fff;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: -30%;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190, 48, 91, 0.12),
+            transparent 55%
+        );
+
+    animation: backgroundGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundGlow {
+    from {
+        transform: translate(-5%, -4%) scale(1);
+    }
+
+    to {
+        transform: translate(5%, 4%) scale(1.1);
+    }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+
+    animation:
+        heroAppear
+        1.2s
+        ease
+        forwards;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small-title {
+    margin-bottom: 20px;
+
+    color: rgba(255, 220, 230, 0.7);
+
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(48px, 8vw, 90px);
+    line-height: 1.05;
+
+    font-weight: 600;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f4cbd7,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 10px 40px rgba(0,0,0,0.25);
+}
+
+.description {
+    margin-top: 28px;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 16px;
+}
+
+#startButton {
+    margin-top: 40px;
+
+    padding: 15px 30px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.14),
+            rgba(255,255,255,0.05)
+        );
+
+    color: white;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#startButton:hover {
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.22),
+            rgba(255,255,255,0.08)
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.25);
+}
+
+
+/* =========================
+   LETTER SECTION
+========================= */
+
+.letter {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 100px 20px;
+
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.letter.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter-content {
+    width: 100%;
+    max-width: 900px;
+
+    padding: 55px 30px 80px;
+
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.09),
+            rgba(255,255,255,0.025)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.28);
+
+    backdrop-filter: blur(20px);
+
+    text-align: center;
+}
+
+.letter-content h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.2;
+
+    font-weight: 500;
+
+    color: #fff;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: 320px;
+    height: 210px;
+
+    margin: 170px auto 40px;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    overflow: visible;
+
+    perspective: 1000px;
+
+    filter:
+        drop-shadow(
+            0 25px 25px rgba(0,0,0,0.3)
+        );
+}
+
+
+/* BACK */
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ad3155,
+            #8c1d3d 55%,
+            #70132c
+        );
+
+    border: 1px solid rgba(255,255,255,0.16);
+}
+
+
+/* =========================
+   PAPER
+========================= */
+
+.paper-wrap {
+    position: absolute;
+    inset: 0;
+
+    z-index: 3;            /* между задней стенкой и лицевой частью */
+
+    overflow: visible;
+    pointer-events: none;
+}
+
+.letter-paper {
+    position: absolute;
+
+    left: 28px;
+    bottom: 12px;
+
+    width: 264px;
+    height: 188px;
+
+    padding: 23px 16px;
+
+    border-radius: 6px;
+
+    background: linear-gradient(145deg, #ffffff, #f4f2f5);
+
+    color: #781b36;
+    text-align: center;
+
+    box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+
+    transform: translateY(0) rotate(0deg);
+    transform-origin: center bottom;
+
+    /* закрытие: письмо уходит сразу */
+    transition: transform 1.6s cubic-bezier(0.45, 0, 0.25, 1);
+
+    will-change: transform;
+}
+
+.paper-text {
+    font-family: "Playfair Display", serif;
+
+    font-size: 21px;
+
+    font-style: italic;
+
+    color: #791b36;
+}
+
+.paper-line {
+    width: 55px;
+    height: 1px;
+
+    margin: 10px auto 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #aaa,
+            transparent
+        );
+}
+
+.paper-heart {
+    font-family: Georgia, serif;
+
+    font-size: 27px;
+
+    color: #a7a7b2;
+}
+
+.read-button {
+    margin-top: 18px;
+
+    padding: 9px 18px;
+
+    border: 1px solid rgba(120,27,54,0.2);
+    border-radius: 30px;
+
+    background: white;
+
+    color: #791b36;
+
+    font-family: "Montserrat", sans-serif;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.read-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(120,27,54,0.18);
+}
+
+
+/* =========================
+   FRONT
+========================= */
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+
+    z-index: 5;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    pointer-events: none;
+}
+
+.front-left {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #aa2d50,
+            #8c1c3c
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            0 100%
+        );
+}
+
+.front-right {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            225deg,
+            #a1274c,
+            #75142f
+        );
+
+    clip-path:
+        polygon(
+            100% 0,
+            50% 58%,
+            100% 100%
+        );
+}
+
+.front-bottom {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            160deg,
+            #a52a4e,
+            #79162f
+        );
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 43%,
+            100% 100%
+        );
+}
+
+
+/* =========================
+   FLAP
+========================= */
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 320px;
+    height: 124px;
+
+    z-index: 8;
+
+    background: linear-gradient(160deg, #b6375d, #972344 50%, #7b1732);
+
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+    transform-origin: 50% 0;
+    transform: rotateX(0deg);
+
+    /* закрытие: клапан закрывается после того, как письмо спряталось */
+    transition:
+        transform 0.9s cubic-bezier(0.4, 0, 0.2, 1) 1.5s,
+        z-index 0s linear 1.95s;
+}
+
+.envelope-flap::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            160deg,
+            rgba(255,255,255,0.12),
+            transparent 45%
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+}
+
+
+/* =========================
+   SEAL
+========================= */
+
+.heart-seal {
+    position: absolute;
+
+    left: 50%;
+    top: 106px;
+
+    width: 46px;
+    height: 46px;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffffff,
+            #eeeeF2 35%,
+            #c8c8d0 68%,
+            #9d9da8
+        );
+
+    border: 1px solid rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3),
+        inset 0 2px 3px rgba(255,255,255,0.95),
+        inset 0 -2px 4px rgba(90,90,105,0.3);
+
+        transition:
+        opacity 0.45s ease 2.3s,
+        transform 0.55s ease 2.3s;
+
+    pointer-events: none;
+}
+
+.heart-seal span {
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    color: #8b2945;
+
+    text-shadow:
+        0 1px 1px white;
+}
+
+/* =========================
+   OPEN
+========================= */
+
+.envelope.open .envelope-flap {
+    transform: rotateX(155deg);
+    z-index: 2;            /* уходит за письмо, когда стоит ребром */
+
+    transition:
+        transform 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+        z-index 0s linear 0.45s;
+}
+
+.envelope.open .letter-paper {
+    transform: translateY(-164px);
+
+    /* письмо начинает выезжать, когда клапан уже почти открыт */
+    transition: transform 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.7s;
+}
+
+.envelope.open .heart-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.45s ease;
+}
+.envelope.closing .letter-paper {
+    animation:
+        letterIn
+        3.8s
+        cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        )
+        forwards;
+}
+
+@keyframes letterIn {
+
+    0% {
+        transform:
+            translate3d(0,-164px,0)
+            rotate(0deg);
+
+        clip-path:
+            inset(0 0 0 0);
+    }
+
+    10% {
+        transform:
+            translate3d(0,-160px,0)
+            rotate(0deg);
+
+        clip-path:
+            inset(4% 0 0 0);
+    }
+
+    25% {
+        transform:
+            translate3d(0,-145px,0)
+            rotate(-0.5deg);
+
+        clip-path:
+            inset(18% 0 0 0);
+    }
+
+    40% {
+        transform:
+            translate3d(0,-120px,0)
+            rotate(-1.2deg);
+
+        clip-path:
+            inset(38% 0 0 0);
+    }
+
+    55% {
+        transform:
+            translate3d(0,-88px,0)
+            rotate(-1.8deg);
+
+        clip-path:
+            inset(60% 0 0 0);
+    }
+
+    70% {
+        transform:
+            translate3d(0,-55px,0)
+            rotate(-1deg);
+
+        clip-path:
+            inset(78% 0 0 0);
+    }
+
+    85% {
+        transform:
+            translate3d(0,-22px,0)
+            rotate(-0.4deg);
+
+        clip-path:
+            inset(94% 0 0 0);
+    }
+
+    100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg);
+
+        clip-path:
+            inset(100% 0 0 0);
+    }
+}
+
+.envelope.closing .envelope-flap {
+    transition-delay: 1.4s;
+
+    transform:
+        rotateX(0deg);
+}
+
+.envelope.closing .heart-seal {
+    transition-delay: 2.8s;
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+
+    display: flex;
+    overflow-y: auto;
+
+    padding: 40px 20px;
+
+        background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(214, 90, 130, 0.38),
+            transparent 60%
+        ),
+        rgba(96, 22, 52, 0.5);
+
+    backdrop-filter: blur(18px) brightness(1.25);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.9s ease,
+        visibility 0s linear 0.9s;
+}
+
+.message.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 1s ease 0.7s,
+        visibility 0s;
+}
+
+.message-box {
+    margin: auto;               /* центрирует и не обрезает длинный текст */
+
+    opacity: 0;
+    transform: scale(0.55);
+
+    transition:
+        transform 1.4s cubic-bezier(0.16, 0.84, 0.3, 1),
+        opacity 1s ease;
+}
+
+.message.show .message-box {
+    opacity: 1;
+    transform: scale(1);
+
+    transition-delay: 0.7s;
+}
+
+
+/* =========================
+   УХОД КОНВЕРТА
+========================= */
+
+.envelope {
+    transition:
+        translate 1.3s cubic-bezier(0.5, 0, 0.2, 1),
+        scale 1.3s cubic-bezier(0.5, 0, 0.2, 1),
+        opacity 1s ease 0.2s;
+}
+
+.letter-content {
+    transition: opacity 1s ease 0.5s;
+}
+
+.letter.reading .envelope {
+    translate: 0 320px;
+    scale: 1.12;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.letter.reading .letter-content {
+    opacity: 0;
+}
+
+.message-box {
+    width: min(700px, 100%);
+
+    padding: 55px 40px;
+
+    border-radius: 30px;
+
+        background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.08)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(20px);
+
+    text-align: center;
+}
+
+.message-box h2 {
+    margin-bottom: 30px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 38px;
+}
+
+.message-box p:not(.small-title) {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.message-heart {
+    margin-top: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+
+    color: #d8a0b2;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .letter-content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .envelope {
+        transform: scale(0.85);
+        transform-origin: top center;
+
+        margin-bottom: -20px;
+    }
+
+    .message-box {
+        padding: 40px 25px;
+    }
+}
+/* =========================
+   КНОПКА ДАЛЬШЕ
+========================= */
+
+.next-button {
+    margin-top: 34px;
+    padding: 13px 30px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 40px;
+
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.next-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.24);
+}
+
+
+/* =========================
+   ПЕРЕЛЁТ ПИСЬМА
+========================= */
+
+.message.leaving .message-box,
+.message.show.leaving .message-box {
+    opacity: 0;
+    transform: scale(1.6);
+    filter: blur(8px);
+
+    transition:
+        transform 1s cubic-bezier(0.6, 0, 0.8, 0.4),
+        opacity 0.8s ease 0.1s,
+        filter 0.8s ease;
+    transition-delay: 0s;
+}
+
+.message.leaving {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease 0.9s,
+        visibility 0s linear 1.7s;
+}
+
+
+/* =========================
+   HUB
+========================= */
+
+.hub,
+.topic {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    overflow-y: auto;
+
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(circle at 50% 30%, rgba(214,90,130,0.4), transparent 60%),
+        linear-gradient(135deg, #4a1029, #6b1c3d 50%, #3d0d22);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.9s ease, visibility 0s linear 0.9s;
+}
+
+.hub { z-index: 60; }
+.topic { z-index: 70; }
+
+.hub.show,
+.topic.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition: opacity 0.9s ease, visibility 0s;
+}
+
+.hub-inner {
+    width: 100%;
+    max-width: 960px;
+    margin: auto;
+    text-align: center;
+}
+
+.hub-inner h2 {
+    margin-bottom: 44px;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 500;
+}
+
+.hub-cards {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.topic-card {
+    width: 260px;
+    padding: 38px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 26px;
+
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.07));
+    backdrop-filter: blur(14px);
+
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.hub.show .topic-card {
+    animation: cardIn 1s cubic-bezier(0.16, 0.84, 0.3, 1) forwards;
+}
+
+.hub.show .topic-card:nth-child(1) { animation-delay: 0.3s; }
+.hub.show .topic-card:nth-child(2) { animation-delay: 0.5s; }
+.hub.show .topic-card:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(50px) scale(0.8); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.topic-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(255,255,255,0.28), rgba(255,255,255,0.1));
+}
+
+.card-icon { font-size: 34px; }
+
+.card-title {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+}
+
+.card-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+}
+
+.topic-card.visited { border-color: rgba(255,255,255,0.55); }
+
+
+/* =========================
+   СТРАНИЦЫ ТЕМ
+========================= */
+
+.topic-box {
+    position: relative;
+
+    width: min(680px, 100%);
+    margin: auto;
+    padding: 70px 40px 50px;
+
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+
+    text-align: center;
+
+    transform: scale(0.85);
+    transition: transform 1s cubic-bezier(0.16, 0.84, 0.3, 1);
+}
+
+.topic.show .topic-box { transform: scale(1); }
+
+.back-button {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+
+    border: none;
+    background: none;
+
+    color: rgba(255,255,255,0.8);
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.back-button:hover { color: #fff; }
+
+.topic-page { display: none; }
+.topic-page.active { display: block; }
+
+.topic-page h2 {
+    margin-bottom: 28px;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 500;
+}
+
+.topic-page p {
+    margin-top: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.92);
+}
+
+.reasons {
+    list-style: none;
+    text-align: left;
+}
+
+.reasons li {
+    position: relative;
+
+    margin-top: 14px;
+    padding: 14px 18px 14px 46px;
+
+    border-radius: 16px;
+    background: rgba(255,255,255,0.1);
+    line-height: 1.6;
+
+    opacity: 0;
+}
+
+.reasons li::before {
+    content: "♡";
+    position: absolute;
+    left: 17px;
+    color: #ffc3d5;
+}
+
+.topic-page.active .reasons li,
+.topic-page.active p {
+    animation: lineIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.topic-page.active li:nth-child(1), .topic-page.active p:nth-of-type(1) { animation-delay: 0.4s; }
+.topic-page.active li:nth-child(2), .topic-page.active p:nth-of-type(2) { animation-delay: 0.9s; }
+.topic-page.active li:nth-child(3), .topic-page.active p:nth-of-type(3) { animation-delay: 1.4s; }
+.topic-page.active li:nth-child(4) { animation-delay: 1.9s; }
+.topic-page.active li:nth-child(5) { animation-delay: 2.4s; }
+
+@keyframes lineIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.warning {
+    padding: 16px 18px;
+
+    border: 1px dashed rgba(255,220,230,0.7);
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.1);
+}
+/* =========================
+   ТРЕУГОЛЬНИК ИЗ КАРТОЧЕК
+========================= */
+
+.hub-cards {
+    max-width: 560px;
+    margin: 0 auto;
+    gap: 22px;
+    justify-content: center;   /* третья карточка встаёт по центру снизу */
+}
+
+.topic-card {
+    width: min(260px, calc(50% - 11px));
+}
+
+.hub.show .topic-card {
+    opacity: 1;
+    transform: none;
+    animation: cardIn 1s cubic-bezier(0.16, 0.84, 0.3, 1) backwards;
+}
+
+.hub.show .topic-card:nth-child(1) { animation-delay: 0.3s; }
+.hub.show .topic-card:nth-child(2) { animation-delay: 0.5s; }
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(50px) scale(0.8); }
+    to   { opacity: 1; transform: none; }
+}
+
+.card-icon svg { display: block; }
+
+
+/* =========================
+   СКРЫТАЯ КАРТОЧКА-ПОДАРОК
+========================= */
+
+/* занимает место, но не видна, поэтому остальные не прыгают */
+.hub.show .topic-card.final-card:not(.reveal) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    animation: none;
+}
+
+.hub.show .topic-card.final-card.reveal {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    border-color: #ffd9e4;
+
+    animation:
+        giftIn 1.2s cubic-bezier(0.16, 0.84, 0.3, 1) backwards,
+        giftPulse 1.6s ease 1.2s 3;
+}
+
+@keyframes giftIn {
+    from { opacity: 0; transform: translateY(-30px) scale(0.6); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes giftPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,200,220,0.7); }
+    50%      { box-shadow: 0 0 45px 14px rgba(255,200,220,0.5); }
+}
+
+
+@media (max-width: 480px) {
+    .topic-card { padding: 28px 12px; }
+    .card-title { font-size: 20px; }
+    .card-sub { font-size: 11px; }
+}
+/* =========================
+   ПЕРЕЛИВАЮЩИЙСЯ ФОН
+========================= */
+
+@keyframes shimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* заставка и письмо */
+
+body {
+    background:
+        linear-gradient(
+            120deg,
+            #16050c,
+            #3a0c1e 25%,
+            #5c1332 50%,
+            #320a19 75%,
+            #16050c
+        );
+
+    background-size: 300% 300%;
+    animation: shimmer 16s ease-in-out infinite;
+}
+
+/* выбор тем и страницы тем */
+
+.hub,
+.topic {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(214, 90, 130, 0.4),
+            transparent 60%
+        ),
+        linear-gradient(
+            120deg,
+            #4a1029,
+            #7a2147 25%,
+            #9a2d5a 50%,
+            #6b1c3d 75%,
+            #4a1029
+        );
+
+    background-size: 100% 100%, 300% 300%;
+    animation: shimmer 16s ease-in-out infinite;
+}
+/* =========================
+   РАЗВОРАЧИВАЮЩИЕСЯ ПРИЧИНЫ
+========================= */
+
+.reason-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    font-size: 19px;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.reason-arrow {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    color: #ffc3d5;
+
+    transition: transform 0.4s ease;
+}
+
+.reasons li.reason:hover {
+    background: rgba(255,255,255,0.17);
+}
+
+.reason-body {
+    display: none;
+}
+
+.reason-text {
+    display: block;
+
+    margin-top: 18px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.92);
+}
+
+/* курсор печати */
+
+.reason-text.typing::after {
+    content: "|";
+
+    margin-left: 2px;
+
+    color: #ffc3d5;
+    animation: caret 0.8s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% { opacity: 0; }
+}
+
+
+/* когда одна причина открыта, остальные скрыты */
+
+.reasons.has-open li:not(.open) {
+    display: none;
+}
+
+.topic-page.active .reasons li.open {
+    opacity: 1;
+    padding: 28px 28px 32px 46px;
+    background: rgba(255,255,255,0.14);
+
+    animation: reasonExpand 0.6s cubic-bezier(0.16, 0.84, 0.3, 1) 0s both;
+}
+
+.reasons li.open .reason-body {
+    display: block;
+}
+
+.reasons li.open .reason-title {
+    font-size: 24px;
+}
+
+.reasons li.open .reason-arrow {
+    transform: rotate(45deg);   /* + превращается в × */
+}
+
+@keyframes reasonExpand {
+    from { transform: scale(0.94); }
+    to   { transform: none; }
+}
+
+
+/* после закрытия остальные появляются без долгой задержки */
+
+.topic-page.active .reasons.quick li {
+    animation-delay: 0s;
+}
+/* =========================
+   ПЛАВНОЕ РАСКРЫТИЕ ПУНКТОВ
+========================= */
+
+.reasons li {
+    max-height: 100px;
+    overflow: hidden;
+
+    transition:
+        max-height 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        padding 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        margin 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        opacity 0.5s ease,
+        background 0.3s ease;
+}
+
+/* после появления списка отключаем стартовую анимацию */
+
+.topic-page.active .reasons.ready li {
+    animation: none;
+    opacity: 1;
+}
+
+/* вытесненные пункты схлопываются */
+
+.topic-page.active .reasons.ready li.collapsed {
+    max-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* раскрытый пункт */
+
+.topic-page.active .reasons.ready li.open {
+    max-height: 900px;
+    padding: 26px 26px 30px 46px;
+    background: rgba(255,255,255,0.14);
+}
+
+/* тело раскрывается вниз */
+
+.reason-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+
+    transition:
+        grid-template-rows 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        margin-top 0.8s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.reasons li.open .reason-body {
+    grid-template-rows: 1fr;
+    margin-top: 18px;
+}
+
+.reason-text {
+    min-height: 0;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+/* ещё не напечатанный текст занимает место, но невидим */
+
+.reason-text .rest {
+    color: transparent;
+}
+
+.reason-text .typed.typing::after {
+    content: "|";
+
+    display: inline-block;
+    width: 0;
+
+    color: #ffc3d5;
+    animation: caret 0.8s steps(1) infinite;
+}
+.trail-heart {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+
+    color: #ffc3d5;
+    font-size: 14px;
+
+    transform: translate(-50%, -50%);
+    animation: trailFade 1s ease-out forwards;
+}
+
+@keyframes trailFade {
+    to {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 26px)) scale(0.3);
+    }
+}
+/* =========================
+   ФИКСИРОВАННАЯ ПЛАШКА, ПУНКТЫ СДВИГАЮТ ДРУГ ДРУГА
+========================= */
+
+.reasons-clip {
+    overflow: hidden;
+}
+
+.reasons {
+    position: relative;
+    display: flow-root;
+
+    transition: transform 0.8s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.reasons li {
+    max-height: none;
+
+    transition:
+        height 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        padding 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        background 0.3s ease;
+}
+
+.topic-page.active .reasons.ready li.open {
+    max-height: none;
+    overflow-y: auto;          /* запасной скролл, если текст длиннее места */
+    scrollbar-width: none;
+}
+/* =========================
+   СТИРАШКА
+========================= */
+
+.final-content { display: none; }
+.final-content.show { display: block; }
+
+.scratch-hint {
+    color: rgba(255,255,255,0.8);
+}
+
+.scratch-card {
+    position: relative;
+
+    width: min(320px, 100%);
+    height: 210px;
+
+    margin: 28px auto 0;
+
+    border-radius: 22px;
+    overflow: hidden;
+
+    box-shadow: 0 18px 45px rgba(0,0,0,0.3);
+
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.scratch-under {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background:
+        radial-gradient(circle at 50% 40%, #fff, #ffe3ec 70%);
+
+    color: #8c1d3d;
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-style: italic;
+}
+
+#scratchCanvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: grab;
+
+    transition: opacity 0.9s ease;
+}
+
+#scratchCanvas.gone {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scratch-progress {
+    margin-top: 16px;
+
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+/* вспышка при открытии */
+
+.scratch-flash {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle, #fff, rgba(255,200,220,0.85) 60%, transparent);
+
+    opacity: 0;
+    animation: flashAnim 1.3s ease forwards;
+}
+
+@keyframes flashAnim {
+    0%   { opacity: 0; }
+    25%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.scratch-stage.hide {
+    display: none;
+}
+/* =========================
+   РЕАЛИСТИЧНАЯ СТИРАШКА
+========================= */
+
+/* карточка больше не обрезает крошки, поэтому скругление вешаем на слои */
+
+.scratch-card {
+    overflow: visible;
+}
+
+.scratch-under,
+#scratchCanvas {
+    border-radius: 22px;
+}
+
+/* стёртое выглядит как вдавленное */
+
+.scratch-under {
+    box-shadow:
+        inset 0 0 28px rgba(140, 29, 61, 0.28),
+        inset 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* тень по краю дырок в фольге: слой «приподнят» над подложкой */
+
+#scratchCanvas {
+    filter: drop-shadow(0 1px 1.5px rgba(60, 0, 20, 0.5));
+
+    /* курсор-монетка */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Ccircle cx='17' cy='17' r='14' fill='%23e8c9a0' stroke='%238a6a3a' stroke-width='2'/%3E%3Ccircle cx='17' cy='17' r='9' fill='none' stroke='%238a6a3a' stroke-width='1' opacity='.6'/%3E%3C/svg%3E") 17 17, grab;
+}
+
+/* слой с крошками лежит поверх карточки и вылезает за её края */
+
+.scratch-particles {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+}
+/* =========================
+   СЕРЕБРЯНАЯ МОНЕТКА
+========================= */
+
+#scratchCanvas {
+    cursor: none;   /* вместо старого курсора работает монетка */
+}
+
+.coin {
+    position: absolute;
+    z-index: 6;
+
+    width: 64px;
+    height: 64px;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transform: translate(-50%, -50%) rotate(-12deg) scale(1.06);
+
+    filter:
+        drop-shadow(0 8px 6px rgba(40, 0, 15, 0.38))
+        drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+
+    transition:
+        transform 0.14s ease-out,
+        opacity 0.25s ease,
+        filter 0.2s ease;
+}
+
+.coin.visible {
+    opacity: 1;
+}
+
+/* прижата к фольге: ближе и тень короче */
+
+.coin.down {
+    filter:
+        drop-shadow(0 3px 2px rgba(40, 0, 15, 0.45))
+        drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+.coin svg {
+    display: block;
+}
+/* =========================
+   СПРЯТАННАЯ МОНЕТКА
+========================= */
+
+.hidden-coin {
+    position: absolute;
+    right: 22px;
+    bottom: 16px;
+    z-index: 3;
+
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(-18deg) scale(0.8);
+
+    filter: drop-shadow(0 3px 3px rgba(40, 0, 15, 0.4));
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        visibility 0s linear 0.6s;
+}
+
+.hidden-coin svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* появляется только в раскрытом пункте, с небольшой задержкой */
+
+
+@keyframes coinGlint {
+    0%, 100% { filter: drop-shadow(0 3px 3px rgba(40,0,15,0.4)); }
+    50%      { filter: drop-shadow(0 0 9px rgba(255,255,255,0.95)); }
+}
+
+
+@keyframes coinTake {
+    0%   { opacity: 0.9; transform: rotate(-18deg) scale(1); }
+    35%  { opacity: 1;   transform: translateY(-26px) rotate(160deg) scale(1.5); }
+    100% { opacity: 0;   transform: translateY(-70px) rotate(380deg) scale(0.5); }
+}
+
+
+/* =========================
+   НАДПИСЬ «ОНА ТЕБЕ ПРИГОДИТСЯ»
+========================= */
+
+.coin-note {
+    position: fixed;
+    left: 50%;
+    bottom: 14%;
+    z-index: 90;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 0 20px;
+    max-width: 94vw;
+
+    pointer-events: none;
+    white-space: nowrap;
+
+    transform: translateX(-50%);
+    animation: noteIn 1.6s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.coin-note.out {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-14px);
+}
+
+.coin-note-text {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(24px, 6vw, 38px);
+
+    background: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #c9ccd3 30%,
+        #ffffff 50%,
+        #aeb2bb 70%,
+        #ffffff 100%
+    );
+    background-size: 250% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 14px rgba(255, 210, 225, 0.7));
+
+    animation: noteShine 3s linear infinite;
+}
+
+.coin-note-spark {
+    color: #ffe3ec;
+    font-size: 20px;
+
+    text-shadow: 0 0 12px rgba(255, 210, 225, 0.95);
+
+    animation: sparkPulse 1.4s ease-in-out infinite;
+}
+
+.coin-note-spark:last-child {
+    animation-delay: 0.7s;
+}
+
+@keyframes noteIn {
+    from {
+        opacity: 0;
+        letter-spacing: 12px;
+        filter: blur(8px);
+        transform: translateX(-50%) translateY(24px);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: 0;
+        filter: blur(0);
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes noteShine {
+    from { background-position: 150% 0; }
+    to   { background-position: -100% 0; }
+}
+
+@keyframes sparkPulse {
+    0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.6; }
+    50%      { transform: scale(1.3) rotate(25deg); opacity: 1; }
+}
+
+
+/* =========================
+   СТИРАШКА БЕЗ МОНЕТКИ
+========================= */
+
+#scratchCanvas {
+    cursor: not-allowed;
+}
+
+.scratch-card.has-coin #scratchCanvas {
+    cursor: none;
+}
+
+.need-coin {
+    margin-top: 10px;
+
+    color: #ffd9e4;
+    font-size: 14px;
+    font-style: italic;
+
+    transition: opacity 0.6s ease;
+}
+
+.need-coin.hidden {
+    display: none;
+}
+
+.scratch-card.shake {
+    animation: cardShake 0.45s ease;
+}
+
+@keyframes cardShake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-9px); }
+    75%      { transform: translateX(9px); }
+}
+.reasons-clip {
+    position: relative;
+}
+
+.hidden-coin.show {
+    opacity: 0.9;
+    visibility: visible;
+    transform: rotate(-18deg) scale(1);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        visibility 0s;
+
+    animation: coinGlint 3.6s ease-in-out 1.5s infinite;
+}
+
+.hidden-coin.show:hover {
+    transform: rotate(-8deg) scale(1.2);
+}
+
+/* этот блок должен стоять ниже .show */
+
+.hidden-coin.taken {
+    visibility: visible;
+    pointer-events: none;
+    animation: coinTake 0.9s ease forwards;
+}
+/* =========================
+   ПУНКТЫ «ПОЧЕМУ Я ТЕБЯ ЛЮБЛЮ»
+========================= */
+
+.reasons-clip {
+    position: relative;
+    overflow: hidden;
+}
+
+.reasons {
+    position: relative;
+    display: flow-root;
+}
+
+.reasons li {
+    overflow: hidden;
+
+    transition:
+        height 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        margin-top 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        padding 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        background 0.5s ease,
+        border-radius 0.8s ease;
+}
+
+.reasons li::before {
+    transition: opacity 0.3s ease;
+}
+
+/* после появления списка отключаем стартовую анимацию */
+
+.topic-page.active .reasons.ready li {
+    animation: none;
+    opacity: 1;
+}
+
+.reason-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    font-size: 19px;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: opacity 0.4s ease;
+}
+
+.reason-arrow {
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    color: #ffc3d5;
+
+    transition: transform 0.4s ease;
+}
+
+.reasons li.reason:hover {
+    background: rgba(255, 255, 255, 0.17);
+}
+
+/* раскрытый пункт */
+
+.reasons li.open {
+    padding: 26px 26px 30px 46px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.reasons li.open .reason-title {
+    font-size: 24px;
+}
+
+.reasons li.open .reason-arrow {
+    transform: rotate(45deg);
+}
+
+/* тело раскрывается вниз */
+
+.reason-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+
+    transition:
+        grid-template-rows 0.8s cubic-bezier(0.45, 0, 0.2, 1),
+        margin-top 0.8s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.reasons li.open .reason-body {
+    grid-template-rows: 1fr;
+    margin-top: 18px;
+}
+
+.reason-text {
+    display: block;
+    min-height: 0;
+    overflow: hidden;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* ещё не напечатанный текст занимает место, но невидим */
+
+.reason-text .rest {
+    color: transparent;
+}
+
+.reason-text .typed.typing::after {
+    content: "|";
+
+    display: inline-block;
+    width: 0;
+
+    color: #ffc3d5;
+    animation: caret 0.8s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% { opacity: 0; }
+}
+
+/* сжатый пункт = тонкая полоска */
+
+.reasons li.squeezed {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    border-radius: 6px;
+    background: rgba(255, 195, 213, 0.38);
+
+    cursor: pointer;
+}
+
+.reasons li.squeezed:hover {
+    background: rgba(255, 195, 213, 0.6);
+}
+
+.reasons li.squeezed::before {
+    opacity: 0;
+}
+
+.reasons li.squeezed .reason-head {
+    opacity: 0;
+    pointer-events: none;   /* клик ловит сама полоска */
+}
+/* =========================
+   ЦВЕТОК ПОД КНОПКОЙ
+========================= */
+
+.topic-card {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 110px;
+}
+
+.topic-card > span {
+    position: relative;
+    z-index: 1;
+}
+
+.card-flower {
+    position: absolute;
+    left: 50%;
+    bottom: -90px;
+
+    width: 230px;
+    height: 230px;
+    margin-left: -115px;
+
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* лепестки: в покое полузакрыты */
+
+.card-flower .petal {
+    fill: rgba(255, 214, 228, 0.14);
+    stroke: rgba(255, 230, 238, 0.5);
+    stroke-width: 1.2;
+
+    transform-origin: 100px 100px;
+    transform: rotate(calc(var(--a) * 0.3)) scale(calc(var(--s) * 0.5));
+
+    transition:
+        transform 1.1s cubic-bezier(0.22, 0.8, 0.3, 1),
+        fill 0.6s ease,
+        stroke 0.6s ease;
+    transition-delay: calc(var(--i) * 40ms);
+}
+
+.card-flower .core {
+    fill: rgba(255, 235, 242, 0.55);
+
+    transform-origin: 100px 100px;
+    transform: scale(0.6);
+
+    transition: transform 1s ease, fill 0.6s ease;
+}
+
+.topic-card:hover .petal,
+.topic-card:active .petal,
+.topic-card:focus-visible .petal {
+    fill: rgba(255, 214, 228, 0.26);
+    stroke: rgba(255, 240, 246, 0.85);
+
+    transform: rotate(var(--a)) scale(var(--s));
+}
+
+.topic-card:hover .core,
+.topic-card:active .core,
+.topic-card:focus-visible .core {
+    transform: scale(1.1);
+    fill: rgba(255, 245, 249, 0.9);
+}
+
+/* абстрактные линии: прорисовываются при наведении */
+
+.flower-lines {
+    transform-origin: 100px 100px;
+    animation: linesSpin 28s linear infinite;
+}
+
+.flower-lines path {
+    fill: none;
+    stroke: rgba(255, 225, 236, 0.85);
+    stroke-width: 1;
+    stroke-linecap: round;
+
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 1;
+    opacity: 0;
+
+    transition:
+        stroke-dashoffset 1.6s ease,
+        opacity 0.5s ease;
+    transition-delay: calc(var(--i) * 90ms);
+}
+
+.topic-card:hover .flower-lines path,
+.topic-card:active .flower-lines path,
+.topic-card:focus-visible .flower-lines path {
+    stroke-dashoffset: 0;
+    opacity: 1;
+}
+
+@keyframes linesSpin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+    .topic-card { padding-bottom: 96px; }
+    .card-flower { width: 190px; height: 190px; margin-left: -95px; bottom: -74px; }
+}
+/* =========================
+   ЦВЕТОЧКИ ПОД КНОПКАМИ
+========================= */
+
+#startButton,
+.next-button,
+.read-button {
+    position: relative;
+    isolation: isolate;
+}
+
+.back-button {
+    isolation: isolate;   /* position: absolute у неё уже есть */
+}
+
+.btn-flower {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -24px;
+
+    z-index: -1;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.btn-flower.small {
+    width: 46px;
+    height: 46px;
+    margin-left: -23px;
+    margin-top: -16px;
+}
+
+.btn-flower .bp {
+    fill: var(--fl-fill, rgba(255, 214, 228, 0.18));
+    stroke: var(--fl-stroke, rgba(255, 232, 240, 0.65));
+    stroke-width: 1;
+
+    transform-origin: 50px 50px;
+    transform: rotate(calc(var(--a) * 0.35)) scale(calc(var(--s) * 0.5));
+
+    transition:
+        transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1),
+        fill 0.5s ease;
+    transition-delay: calc(var(--i) * 30ms);
+}
+
+.btn-flower .bc {
+    fill: var(--fl-core, rgba(255, 240, 246, 0.8));
+
+    transform-origin: 50px 50px;
+    transform: scale(0.6);
+    transition: transform 0.8s ease;
+}
+
+button:hover > .btn-flower .bp,
+button:active > .btn-flower .bp,
+button:focus-visible > .btn-flower .bp {
+    transform: rotate(var(--a)) scale(var(--s));
+    fill: var(--fl-fill-hover, rgba(255, 214, 228, 0.32));
+}
+
+button:hover > .btn-flower .bc,
+button:active > .btn-flower .bc,
+button:focus-visible > .btn-flower .bc {
+    transform: scale(1.15);
+}
+
+/* абстрактные дуги */
+
+.btn-flower .bl {
+    transform-origin: 50px 50px;
+    animation: linesSpin 22s linear infinite;
+}
+
+.btn-flower .bl path {
+    fill: none;
+    stroke: var(--fl-stroke, rgba(255, 232, 240, 0.65));
+    stroke-width: 0.9;
+    stroke-linecap: round;
+
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 1;
+    opacity: 0;
+
+    transition: stroke-dashoffset 1.3s ease, opacity 0.4s ease;
+    transition-delay: calc(var(--i) * 80ms);
+}
+
+button:hover > .btn-flower .bl path,
+button:active > .btn-flower .bl path,
+button:focus-visible > .btn-flower .bl path {
+    stroke-dashoffset: 0;
+    opacity: 1;
+}
+
+/* кнопка на белой бумаге письма: цветок
+/* =========================
+   ЦВЕТОК ЦЕЛИКОМ (ПРАВКА)
+========================= */
+
+.topic-card {
+    padding-bottom: 118px;
+}
+
+.card-flower {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+    bottom: -20px;          /* центр цветка выше края, виден весь */
+}
+
+.card-flower .petal {
+    fill: rgba(255, 214, 228, 0.12);
+    stroke: rgba(255, 232, 240, 0.55);
+    stroke-width: 1.1;
+}
+
+.card-flower .core {
+    fill: rgba(255, 235, 242, 0.7);
+    stroke: rgba(255, 245, 249, 0.9);
+    stroke-width: 1;
+}
+
+.card-flower .stamen {
+    fill: rgba(255, 245, 249, 0.85);
+
+    transform-origin: 100px 100px;
+    transform: scale(0.4);
+    opacity: 0.5;
+
+    transition: transform 0.9s ease, opacity 0.6s ease;
+}
+
+.topic-card:hover .stamen,
+.topic-card:active .stamen,
+.topic-card:focus-visible .stamen {
+    transform: scale(1.5);
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .topic-card { padding-bottom: 100px; }
+
+    .card-flower {
+        width: 118px;
+        height: 118px;
+        margin-left: -59px;
+        bottom: -12px;
+    }
+}
+/* =========================
+   ПОДСКАЗКА «ЛИСТАЙ ВНИЗ»
+========================= */
+
+.scroll-hint {
+    margin-top: 56px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    color: rgba(255, 225, 235, 0.75);
+
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: opacity 0.8s ease;
+}
+
+.scroll-hint.gone {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-arrow {
+    display: block;
+    width: 14px;
+    height: 14px;
+
+    border-right: 1.5px solid rgba(255, 225, 235, 0.8);
+    border-bottom: 1.5px solid rgba(255, 225, 235, 0.8);
+
+    transform: rotate(45deg);
+    animation: arrowFloat 2s ease-in-out infinite;
+}
+
+@keyframes arrowFloat {
+    0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.35; }
+    50%      { transform: translateY(10px) rotate(45deg); opacity: 1; }
+}
+
+
+/* =========================
+   ЦВЕТОК НА ФОНЕ
+========================= */
+
+.bg-flower {
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bgf-lines {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    overflow: visible;
+}
+
+.bgf-lines path {
+    fill: none;
+    stroke: rgba(255, 228, 238, 0.9);
+    stroke-linecap: round;
+}
+
+.bgf-bloom {
+    position: absolute;
+    z-index: 1;
+}
+
+.bgf-bloom svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.bg-spin {
+    transform-origin: 150px 150px;
+    animation: bgSpin 120s linear infinite;
+}
+
+@keyframes bgSpin {
+    to { transform: rotate(360deg); }
+}
+
+.bg-flower .bp {
+    fill: rgba(255, 200, 220, 0.10);
+    stroke: rgba(255, 228, 238, 0.55);
+    stroke-width: 0.9;
+}
+
+.bg-flower .bg-core {
+    fill: rgba(255, 235, 242, 0.5);
+}
+/* =========================
+   ПЕЧАТЬ: СНИМАЕТСЯ И ОТЛЕТАЕТ В СТОРОНУ
+========================= */
+
+.envelope {
+    --sx: 235px;   /* куда уезжает печать: вправо */
+    --sy: 70px;    /* и немного вниз */
+}
+
+@media (max-width: 700px) {
+    .envelope {
+        --sx: 92px;    /* на узком экране: вниз и вправо под конверт */
+        --sy: 135px;
+    }
+}
+
+.envelope.open .heart-seal {
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+
+    transform:
+        translate(-50%, -50%)
+        translate(var(--sx), var(--sy))
+        rotate(14deg)
+        scale(1);
+
+        animation: sealPeel 1.5s cubic-bezier(0.3, 0.7, 0.2, 1) forwards;
+}
+
+.envelope.open .heart-seal:hover {
+    filter: brightness(1.08);
+}
+
+/* отрывается, приподнимается и скользит в сторону */
+
+@keyframes sealPeel {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(1);
+    }
+    24% {
+        transform: translate(-50%, -50%) translate(0, -16px) rotate(-9deg) scale(1.3);
+    }
+    100% {
+        transform: translate(-50%, -50%) translate(var(--sx), var(--sy)) rotate(14deg) scale(1);
+    }
+}
+
+/* мягкое сияние: «возьми меня» */
+
+@keyframes sealGlow {
+    0%, 100% {
+        box-shadow:
+            0 4px 10px rgba(0, 0, 0, 0.3),
+            inset 0 2px 3px rgba(255, 255, 255, 0.95),
+            inset 0 -2px 4px rgba(90, 90, 105, 0.3),
+            0 0 0 0 rgba(255, 215, 230, 0);
+    }
+    50% {
+        box-shadow:
+            0 4px 10px rgba(0, 0, 0, 0.3),
+            inset 0 2px 3px rgba(255, 255, 255, 0.95),
+            inset 0 -2px 4px rgba(90, 90, 105, 0.3),
+            0 0 24px 7px rgba(255, 215, 230, 0.75);
+    }
+}
+
+.envelope.open .heart-seal::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);
+
+    transform: translateX(-50%) rotate(-14deg);
+    white-space: nowrap;
+
+    color: rgba(255, 225, 235, 0.95);
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    animation: sealHint 0.8s ease 1.7s forwards;
+}
+
+@keyframes sealHint {
+    to { opacity: 1; }
+}
+
+
+/* =========================
+   ПЕЧАТЬ У НЕЁ: ЖИВЁТ В УГЛУ НА ВСЕХ ЭКРАНАХ
+========================= */
+
+.heart-seal.seal-held {
+    position: fixed;
+    z-index: 150;
+
+    opacity: 1;
+    pointer-events: none;
+    animation: none;
+
+    transform: translate(-50%, -50%) rotate(14deg) scale(1);
+
+    transition:
+        left 1.1s cubic-bezier(0.45, 0, 0.2, 1),
+        top 1.1s cubic-bezier(0.45, 0, 0.2, 1),
+        transform 1.1s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.heart-seal.seal-held.stored {
+    transform: translate(-50%, -50%) rotate(-10deg) scale(0.88);
+}
+
+.seal-note {
+    position: fixed;
+    top: 68px;
+    right: 14px;
+    z-index: 150;
+
+    pointer-events: none;
+
+    color: rgba(255, 225, 235, 0.95);
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    animation: sealNote 3.4s ease 1s forwards;
+}
+
+@keyframes sealNote {
+    0%   { opacity: 0; transform: translateY(-6px); }
+    15%  { opacity: 1; transform: none; }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* =========================
+   КНОПКА «НАЗАД» НА ВСЕХ ЭКРАНАХ
+========================= */
+
+.nav-back {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 140;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 16px 9px 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        visibility 0s linear 0.4s,
+        background 0.3s ease;
+}
+
+.nav-back.show {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        visibility 0s,
+        background 0.3s ease;
+}
+
+.nav-back:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.nav-back em {
+    font-style: normal;
+}
+
+
+/* письмо плавно возвращается при шаге назад из выбора тем */
+
+.message-box {
+    transition:
+        transform 1.4s cubic-bezier(0.16, 0.84, 0.3, 1),
+        opacity 1s ease,
+        filter 1s ease;
+}
+/* линии под письмом лежат ниже карточки письма */
+
+.message-box {
+    position: relative;
+    z-index: 1;
+}
+
+/* подпись в конце письма */
+
+.message-box .message-heart.message-heart {
+    margin-top: 34px;
+
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(24px, 5vw, 32px);
+    letter-spacing: 1px;
+
+    color: #f1d3dd;
+}
+/* =========================
+   МУЗЫКА, ЧАСТИЦЫ, ОТТИСКИ
+========================= */
+
+.music-btn {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 140;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+
+    opacity: 0.6;
+    transition: opacity 0.4s ease, background 0.3s ease;
+}
+
+.music-btn.on {
+    opacity: 1;
+    animation: musicPulse 2.6s ease-in-out infinite;
+}
+
+.music-btn.off {
+    opacity: 0.55;
+    animation: none;
+}
+
+.music-btn.off::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    transform: rotate(-45deg);
+}
+
+@keyframes musicPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(230, 235, 250, 0); }
+    50%      { box-shadow: 0 0 14px 3px rgba(230, 235, 250, 0.35); }
+}
+
+/* частицы лежат под плашками */
+
+.hub-sparks {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hub-inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* оттиск печати на плашке */
+
+.card-stamp {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+
+    width: 44px;
+    height: 44px;
+
+    pointer-events: none;
+    opacity: 0;
+
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+    animation: stampDown 0.75s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+}
+
+.card-stamp::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+
+    opacity: 0;
+    animation: stampRing 0.9s ease-out 0.35s forwards;
+}
+
+@keyframes stampDown {
+    0%   { opacity: 0; transform: scale(2.6) rotate(-30deg); }
+    55%  { opacity: 1; transform: scale(0.88) rotate(-14deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-12deg); }
+}
+
+@keyframes stampRing {
+    0%   { opacity: 0.8; transform: scale(0.8); }
+    100% { opacity: 0;   transform: scale(2.1); }
+}
+/* =========================
+   СЕРЕБРЯНЫЕ ВЕНЗЕЛЯ
+========================= */
+
+.orn {
+    position: absolute;
+    z-index: 4;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.orn-corner { width: 74px; height: 74px; }
+
+.orn-corner.tl { top: -16px;    left: -16px; }
+.orn-corner.tr { top: -16px;    right: -16px;  transform: scaleX(-1); }
+.orn-corner.bl { bottom: -16px; left: -16px;   transform: scaleY(-1); }
+.orn-corner.br { bottom: -16px; right: -16px;  transform: scale(-1, -1); }
+
+.orn-mid { width: 150px; height: 30px; }
+.orn-mid.top    { top: -15px;    left: 50%; margin-left: -75px; }
+.orn-mid.bottom { bottom: -15px; left: 50%; margin-left: -75px; transform: scaleY(-1); }
+
+.orn-mid.inline {
+    position: static;
+    display: block;
+    width: 190px;
+    height: 38px;
+    margin: 6px auto;
+}
+
+/* линии прорисовываются, потом проявляются точки */
+
+.orn-lines path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+
+.orn-fill { opacity: 0; }
+
+.message.show .orn-lines path,
+.hub.show .final-card.reveal .orn-lines path,
+.final-content.show .orn-lines path {
+    animation: ornDraw 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.message.show .orn-lines path          { animation-delay: 1.2s; }
+.hub.show .final-card.reveal .orn-lines path { animation-delay: 2.6s; }
+.final-content.show .orn-lines path    { animation-delay: 0.3s; }
+
+.message.show .orn-fill,
+.hub.show .final-card.reveal .orn-fill,
+.final-content.show .orn-fill {
+    animation: ornFade 1.2s ease forwards;
+}
+
+.message.show .orn-fill          { animation-delay: 2.2s; }
+.hub.show .final-card.reveal .orn-fill { animation-delay: 3.6s; }
+.final-content.show .orn-fill    { animation-delay: 1.4s; }
+
+@keyframes ornDraw { to { stroke-dashoffset: 0; } }
+@keyframes ornFade { to { opacity: 1; } }
+
+/* тонкая внутренняя рамка, как гравировка */
+
+.message-box::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(226, 230, 240, 0.28);
+    border-radius: 22px;
+    pointer-events: none;
+}
+
+.final-card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(226, 230, 240, 0.3);
+    border-radius: 19px;
+    pointer-events: none;
+}
+
+.final-card .orn-corner { width: 54px; height: 54px; }
+.final-card .orn-corner.tl { top: -12px;    left: -12px; }
+.final-card .orn-corner.tr { top: -12px;    right: -12px; }
+.final-card .orn-corner.bl { bottom: -12px; left: -12px; }
+.final-card .orn-corner.br { bottom: -12px; right: -12px; }
+
+@media (max-width: 480px) {
+    .orn-corner { width: 54px; height: 54px; }
+    .orn-corner.tl { top: -10px;    left: -10px; }
+    .orn-corner.tr { top: -10px;    right: -10px; }
+    .orn-corner.bl { bottom: -10px; left: -10px; }
+    .orn-corner.br { bottom: -10px; right: -10px; }
+}
+
+
+/* =========================
+   ТОРЖЕСТВЕННАЯ СТРАНИЦА ПОЗДРАВЛЕНИЯ
+========================= */
+
+.final-content.grand .orn-corner.tl { top: 14px;    left: 14px; }
+.final-content.grand .orn-corner.tr { top: 14px;    right: 14px; }
+.final-content.grand .orn-corner.bl { bottom: 14px; left: 14px; }
+.final-content.grand .orn-corner.br { bottom: 14px; right: 14px; }
+
+.final-content.grand { padding: 6px 8px 4px; }
+
+.final-content.grand h2 {
+    margin-bottom: 4px;
+
+    font-size: clamp(34px, 8vw, 56px);
+    letter-spacing: 3px;
+
+    background: linear-gradient(100deg, #ffffff 0%, #c4c8d2 30%, #ffffff 50%, #9ea3b0 70%, #ffffff 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 14px rgba(230, 235, 250, 0.45));
+    animation: titleShine 4s linear infinite;
+}
+
+@keyframes titleShine {
+    from { background-position: 150% 0; }
+    to   { background-position: -100% 0; }
+}
+
+.final-content.grand p {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(17px, 4.2vw, 21px);
+    line-height: 1.9;
+    color: #f6eff3;
+}
+
+.final-content.grand .warning {
+    margin-top: 26px;
+    padding: 18px 20px;
+
+    font-style: normal;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+
+    border: 1px solid rgba(226, 230, 240, 0.55);
+    outline: 1px solid rgba(226, 230, 240, 0.25);
+    outline-offset: 5px;
+    border-radius: 14px;
+}
+
+
+/* =========================
+   ТАЙМЕР ДО ДНЯ РОЖДЕНИЯ
+========================= */
+
+.countdown { margin-top: 36px; }
+
+.countdown-title {
+    margin-bottom: 14px;
+
+    color: rgba(255, 225, 235, 0.75);
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.countdown-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.cd-box {
+    min-width: 78px;
+    padding: 14px 10px 11px;
+
+    border: 1px solid rgba(226, 230, 240, 0.38);
+    border-radius: 16px;
+
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04));
+    backdrop-filter: blur(10px);
+}
+
+.cd-num {
+    display: block;
+
+    font-family: "Playfair Display", serif;
+    font-size: 34px;
+    line-height: 1.1;
+
+    background: linear-gradient(180deg, #ffffff, #b4b9c4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cd-label {
+    display: block;
+    margin-top: 5px;
+
+    color: rgba(255, 225, 235, 0.65);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cd-final {
+    font-size: 54px;
+    color: #e6e8ee;
+    text-shadow: 0 0 22px rgba(230, 235, 250, 0.8);
+}
+
+@media (max-width: 480px) {
+    .cd-box { min-width: 66px; padding: 12px 8px 9px; }
+    .cd-num { font-size: 28px; }
+    .countdown-row { gap: 8px; }
+}
+/* =========================
+   ВЕНЗЕЛЯ НА ПЛАШКЕ КАК НА ПИСЬМЕ + ТАЙМЕР НА СТРАНИЦЕ ПОЗДРАВЛЕНИЯ
+========================= */
+
+.final-card .orn-corner { width: 64px; height: 64px; }
+.final-card .orn-corner.tl { top: -15px;    left: -15px; }
+.final-card .orn-corner.tr { top: -15px;    right: -15px; }
+.final-card .orn-corner.bl { bottom: -15px; left: -15px; }
+.final-card .orn-corner.br { bottom: -15px; right: -15px; }
+
+.final-card .orn-mid { width: 120px; height: 24px; }
+.final-card .orn-mid.top    { top: -12px;    margin-left: -60px; }
+.final-card .orn-mid.bottom { bottom: -12px; margin-left: -60px; }
+
+@media (max-width: 480px) {
+    .final-card .orn-corner { width: 46px; height: 46px; }
+    .final-card .orn-corner.tl { top: -9px;    left: -9px; }
+    .final-card .orn-corner.tr { top: -9px;    right: -9px; }
+    .final-card .orn-corner.bl { bottom: -9px; left: -9px; }
+    .final-card .orn-corner.br { bottom: -9px; right: -9px; }
+    .final-card .orn-mid { width: 84px; height: 17px; margin-left: -42px; }
+}
+
+.countdown { margin-top: 28px; }
+
+/* заголовок таймера не должен наследовать курсив страницы поздравления */
+
+.final-content.grand .countdown-title {
+    margin: 0 0 14px;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 4px;
+    color: rgba(255, 225, 235, 0.75);
+}
